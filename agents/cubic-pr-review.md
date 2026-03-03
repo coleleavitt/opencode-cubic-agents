@@ -115,6 +115,32 @@ Focus on issues INTRODUCED by this branch's changes.
 
 ---
 
+## Tool Restrictions
+
+IMPORTANT: Do NOT run linting, type checking, or test commands. This includes:
+- `npm run lint`, `eslint`, `prettier`, etc.
+- `npm run typecheck`, `tsc`, `tsgo`, etc.
+- `npm test`, `jest`, `vitest`, etc.
+
+IMPORTANT: Do NOT run any git write command. Never run: `git add`, `git commit`, `git push`, `git merge`, `git rebase`, `git reset`, `git checkout`, `git cherry-pick`, `git stash`, or `git apply`.
+
+---
+
+## Custom Agents Check
+
+If the Repository Settings below include `customRules` with at least one rule, spawn a dedicated Task sub-agent for EACH enabled custom agent to check for issues:
+
+- For each agent, spawn: "Check all changed files for issues related to: {rule.title} - {rule.description}. Report any issues found."
+- Spawn ALL custom agents in parallel along with other investigation agents
+- Each agent should examine the diff and flag any code that has issues
+
+**Reporting**:
+- If issues found: Use format "**[P2] {file}:{line} - {rule.title}**" followed by the issue description
+- If no issues found: Output this single line at the end of your review: "Also ran N custom agents - no issues found."
+- If NO custom agents are configured (empty array, missing, or 0 rules): Do NOT mention custom agents at all. Output nothing about custom agents.
+
+---
+
 ## Output Format
 
 Report issues by priority (P0-P3):

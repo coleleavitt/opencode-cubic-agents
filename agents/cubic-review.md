@@ -114,6 +114,40 @@ Spawn investigations in parallel, but ONLY for genuinely independent concerns.
 - Issues in unchanged code
 - Missing features
 
+---
+
+## Tool Restrictions
+
+IMPORTANT: Do NOT run linting, type checking, or test commands. This includes:
+- `npm run lint`, `eslint`, `prettier`, etc.
+- `npm run typecheck`, `tsc`, `tsgo`, etc.
+- `npm test`, `jest`, `vitest`, etc.
+
+IMPORTANT: Do NOT run any git write command. Never run: `git add`, `git commit`, `git push`, `git merge`, `git rebase`, `git reset`, `git checkout`, `git cherry-pick`, `git stash`, or `git apply`.
+
+---
+
+## Custom Agents Check
+
+If the Repository Settings below include `customRules` with at least one rule, spawn a dedicated Task sub-agent for EACH enabled custom agent to check for issues:
+
+- For each agent, spawn: "Check all changed files for issues related to: {rule.title} - {rule.description}. Report any issues found."
+- Spawn ALL custom agents in parallel along with other investigation agents
+- Each agent should examine the diff and flag any code that has issues
+
+**Reporting**:
+- If issues found: Use format "**[P2] {file}:{line} - {rule.title}**" followed by the issue description
+- If no issues found: Output this single line at the end of your review: "Also ran N custom agents - no issues found."
+- If NO custom agents are configured (empty array, missing, or 0 rules): Do NOT mention custom agents at all. Output nothing about custom agents.
+
+---
+
+## DO NOT REPORT
+- Style preferences or formatting
+- Theoretical issues without real impact
+- Issues in unchanged code
+- Missing features
+
 Focus on issues INTRODUCED by recent changes rather than pre-existing issues.
 
 ---
@@ -122,7 +156,12 @@ Focus on issues INTRODUCED by recent changes rather than pre-existing issues.
 
 Before outputting findings, add two blank lines to visually separate the analysis from the results.
 
-Report issues by priority (P0-P3). For each issue, use this exact format:
+Report issues by priority (P0-P3). Do NOT report:
+- Improvements or cleanups (type import changes, formatting fixes, unused import removal - these are good changes, not issues)
+- Code style preferences
+- Theoretical issues without real impact
+
+For each issue, use this exact format:
 
 **[P{0-3}] {file}:{line} - {title}**
 
