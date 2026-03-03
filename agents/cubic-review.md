@@ -1,7 +1,7 @@
 ---
 description: "Cubic-style code review with P0-P3 priority, parallel sub-agent investigation, and structured output. Triggers: 'cubic review', 'deep review', 'pr review', 'review changes'"
 mode: subagent
-model: anthropic/claude-sonnet-4-20250514
+model: anthropic/claude-sonnet-4-6
 temperature: 0.1
 tools:
   write: false

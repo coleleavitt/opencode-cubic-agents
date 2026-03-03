@@ -1,7 +1,7 @@
 ---
 description: "Security-focused code audit. Finds vulnerabilities, injection points, auth issues, and secrets. Triggers: 'security review', 'security audit', 'find vulnerabilities', 'check security'"
 mode: subagent
-model: anthropic/claude-opus-4-20250514
+model: anthropic/claude-opus-4-6
 temperature: 0.0
 tools:
   write: false

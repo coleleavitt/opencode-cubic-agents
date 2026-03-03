@@ -1,7 +1,7 @@
 ---
 description: "Strict read-only planning mode. Analyze, explore, and plan without making ANY changes. Zero tolerance for modifications."
 mode: primary
-model: anthropic/claude-sonnet-4-20250514
+model: anthropic/claude-sonnet-4-6
 temperature: 0.2
 tools:
   write: false

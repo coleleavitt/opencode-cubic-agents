@@ -1,7 +1,7 @@
 ---
 description: "PR-style review comparing current branch to base branch. Full diff analysis with parallel investigation. Triggers: 'review pr', 'review branch', 'compare to main', 'pr review'"
 mode: subagent
-model: anthropic/claude-sonnet-4-20250514
+model: anthropic/claude-sonnet-4-6
 temperature: 0.1
 tools:
   write: false

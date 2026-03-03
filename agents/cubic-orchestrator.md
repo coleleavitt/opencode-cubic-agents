@@ -1,7 +1,7 @@
 ---
 description: "Orchestrates complex multi-step tasks by delegating to specialized agents. Plan first, then execute. Triggers: 'orchestrate', 'complex task', 'multi-step'"
 mode: subagent
-model: anthropic/claude-opus-4-20250514
+model: anthropic/claude-opus-4-6
 temperature: 0.3
 tools:
   write: true

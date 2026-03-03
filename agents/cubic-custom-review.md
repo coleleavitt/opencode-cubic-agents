@@ -1,7 +1,7 @@
 ---
 description: "Custom code review with user-defined instructions. Accepts any review criteria while maintaining read-only safety. Triggers: 'custom review', 'review with instructions', 'specific review'"
 mode: subagent
-model: anthropic/claude-sonnet-4-20250514
+model: anthropic/claude-sonnet-4-6
 temperature: 0.1
 tools:
   write: false

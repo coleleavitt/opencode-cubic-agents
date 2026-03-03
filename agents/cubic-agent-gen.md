@@ -1,7 +1,7 @@
 ---
 description: "Generate custom OpenCode agents from natural language descriptions. Creates properly configured agent markdown files. Triggers: 'create agent', 'generate agent', 'new agent', 'make me an agent'"
 mode: subagent
-model: anthropic/claude-opus-4-20250514
+model: anthropic/claude-opus-4-6
 temperature: 0.3
 tools:
   write: true
@@ -47,8 +47,8 @@ Based on requirements, determine:
 1. **Mode**: `primary` (main conversation) or `subagent` (specialized tasks)
 2. **Model**: Match capability to task complexity
    - Simple/fast tasks: `anthropic/claude-haiku-4-20250514`
-   - Standard tasks: `anthropic/claude-sonnet-4-20250514`
-   - Complex reasoning: `anthropic/claude-opus-4-20250514`
+   - Standard tasks: `anthropic/claude-sonnet-4-6`
+   - Complex reasoning: `anthropic/claude-opus-4-6`
 3. **Temperature**: 
    - Analysis/code: 0.0-0.2
    - General: 0.3-0.5
@@ -134,7 +134,7 @@ For a request like "Create an agent that reviews Rust code for safety issues":
 ---
 description: "Reviews Rust code for memory safety, undefined behavior, and unsafe usage"
 mode: subagent
-model: anthropic/claude-sonnet-4-20250514
+model: anthropic/claude-sonnet-4-6
 temperature: 0.1
 tools:
   write: false
